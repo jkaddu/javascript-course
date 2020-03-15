@@ -94,7 +94,7 @@ var jane = Object.create(personProto, {
 */
 
 // Primitives vs Objects
-
+/*
 // Primitives
 var a = 23;
 var b = a;
@@ -130,3 +130,299 @@ function change(a, b) {
 change(age, obj);
 console.log(age);
 console.log(obj.city);
+*/
+/////////////////////////////////////////
+// Lecture: Passing functions as arguments(callbacks)
+/*
+var years = [1990, 1991, 1992, 1993, 1994];
+
+function arrayCalc(arr, fn) {
+  var arrRes = [];
+  for (var i = 0; i < arr.length; i++) {
+    arrRes.push(fn(arr[i]));
+  }
+  return arrRes;
+}
+
+function calcAge(el) {
+  return 2020 - el;
+}
+
+function isFullAge(el) {
+  return el >= 18;
+}
+
+function maxHeartRate(el) {
+  if (el >= 18 && el <= 81) {
+    return Math.round(206.9 - 0.67 * el);
+  } else {
+    return -1;
+  }
+}
+
+var ages = arrayCalc(years, calcAge);
+console.log(ages);
+
+var fullAges = arrayCalc(ages, isFullAge);
+console.log(fullAges);
+
+var rates = arrayCalc(ages, maxHeartRate);
+console.log(rates);
+*/
+
+/////////////////////////////////////////////
+// Lecture: Functions returning functions
+/*
+function interviewQuestion(job) {
+  if (job === "designer") {
+    return function(name) {
+      console.log(name + ", can you please explain what UX design is?");
+    };
+  } else if (job === "teacher") {
+    return function(name) {
+      console.log("What subject do you teach, " + name + "?");
+    };
+  } else {
+    return function(name) {
+      console.log("Hello " + name + " what do you do?");
+    };
+  }
+}
+
+var teacherQuestion = interviewQuestion("teacher");
+
+var designerQuestion = interviewQuestion("designer");
+
+teacherQuestion("John");
+designerQuestion("John");
+
+// looks weird but works because its evaluated from left to right
+interviewQuestion("teacher")("Mark");
+
+function saleahSayings(word) {
+  if (word === "hey") {
+    return function(name) {
+      console.log("Hey I'm hungry, please feed me " + name);
+    };
+  } else if (word === "jaja") {
+    return function(name) {
+      console.log("Jaja " + name + " may I have something to drink?");
+    };
+  } else {
+    return function() {
+      console.log("My name is Saleah!");
+    };
+  }
+}
+
+var jaja = saleahSayings("jaja");
+var hey = saleahSayings("hey");
+
+jaja("Fred");
+jaja("Margaret");
+hey("Auntie Grace");
+hey("Uncle Jonathan");
+*/
+
+///////////////////////////////////////
+// Lecture: IIFE(Immediately Invoked Function Expressions)
+/*
+function game() {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+}
+game();
+
+// mainly used for data privacy
+(function() {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+})();
+*/
+
+///////////////////////////////////////////
+// Lecture: Closures
+/*
+function retirement(retirementAge) {
+  return function(yearOfBirth) {
+    var a = " years left until retirement.";
+    var age = 2020 - yearOfBirth;
+    console.log(retirementAge - age + a);
+  };
+}
+var retirementUS = retirement(66);
+retirementUS(1990);
+
+var retirementGermany = retirement(65);
+retirementGermany(1990);
+
+var retirementIceland = retirement(67);
+retirementIceland(1990);
+
+retirement(50)(1990);
+
+// reformatted a function that returned many functions into a closure
+function interviewQuestion(job) {
+  return function(name) {
+    if (job === "designer") {
+      console.log(name + ", can you please explain what UX design is?");
+    } else if (job === "teacher") {
+      console.log("What subject do you teach, " + name + "?");
+    } else {
+      console.log("Hello " + name + " what do you do?");
+    }
+  };
+}
+
+interviewQuestion("designer")("John");
+*/
+
+////////////////////////////////////////
+// Lecture: Bind, Call and Apply
+/*
+var john = {
+  name: "John",
+  age: 29,
+  job: "teacher",
+  presentation: function(style, timeOfDay) {
+    if (style === "formal") {
+      console.log(
+        "Good " +
+          timeOfDay +
+          ", ladies and gentlemen! I'm " +
+          this.name +
+          ", I'm a " +
+          this.job +
+          " and I'm " +
+          this.age +
+          " years old."
+      );
+    } else if (style === "friendly") {
+      console.log(
+        "Hey what's up? I'm " +
+          this.name +
+          ", I'm a " +
+          this.job +
+          " and I'm " +
+          this.age +
+          " years old. Have a nice " +
+          timeOfDay +
+          "!"
+      );
+    }
+  }
+};
+
+var emily = {
+  name: "Emily",
+  age: 35,
+  job: "designer"
+};
+
+john.presentation("formal", "morning");
+
+// the "call" method allows us to set the this keyword/variable to the emily object, replacing
+// the 'this' with 'emily', then input the necessary arguments 
+john.presentation.call(emily, "friendly", "afternoon");
+
+// "apply" does the same thing but accepts an array for its arguments
+// ex: john.presentation.apply(emily, ['friendly', 'afternoon'])
+
+// the 'bind' allows you to create preset arguments
+var johnFriendly = john.presentation.bind(john, "friendly");
+johnFriendly("afternoon");
+johnFriendly("evening");
+
+var emilyFormal = john.presentation.bind(emily, "formal");
+emilyFormal("morning");
+
+var years = [1990, 1991, 1992, 1993, 1994];
+
+function arrayCalc(arr, fn) {
+  var arrRes = [];
+  for (var i = 0; i < arr.length; i++) {
+    arrRes.push(fn(arr[i]));
+  }
+  return arrRes;
+}
+
+function calcAge(el) {
+  return 2020 - el;
+}
+
+function isFullAge(limit, el) {
+  return el >= limit;
+}
+
+var ages = arrayCalc(years, calcAge);
+
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
+
+console.log(ages);
+console.log(fullJapan);
+*/
+
+///////////////////////////////////////////////
+// Coding Challenge
+
+// used IIFE(Immediately Invoked Function Expression) so that if another
+// programmer uses this code it won't interfere with their code or ours
+(function() {
+  class Question {
+    constructor(question, answers, correct) {
+      this.question = question;
+      this.answers = answers;
+      this.correct = correct;
+    }
+  }
+
+  Question.prototype.displayQuestion = function() {
+    console.log(this.question);
+    for (var i = 0; i < this.answers.length; i++) {
+      console.log(i + ": " + this.answers[i]);
+    }
+  };
+
+  var q1 = new Question(
+    "Is JavaScript a highly popular programming language",
+    ["Yes", "No"],
+    0
+  );
+
+  var q2 = new Question(
+    "Who is the instructor of this course",
+    ["Mike", "Joe", "Jonas"],
+    2
+  );
+
+  var q3 = new Question(
+    "What is the latest version of JavaScript",
+    ["ES5", "ES6", "ES9"],
+    2
+  );
+
+  var questions = [q1, q2, q3];
+  var counter = 0;
+
+  function gameLoop() {
+    var n = Math.floor(Math.random() * questions.length);
+    questions[n].displayQuestion();
+    answer = prompt(
+      "Select your answer by choosing the number associated with it. To leave the game type in 'exit' as your answer."
+    );
+    console.log("Your answer was: " + answer);
+    if (answer !== "exit") {
+      if (answer == questions[n].correct) {
+        console.log("Correct!");
+        counter++;
+        console.log("Correct answers: " + counter);
+        console.log("-------------------------------");
+      } else {
+        console.log("Incorrect");
+        console.log("-------------------------------");
+      }
+      gameLoop();
+    }
+  }
+  gameLoop();
+})();

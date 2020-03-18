@@ -139,7 +139,7 @@ console.log(ages6);
 
 /////////////////////////////////////////////
 // Lecture: Arrow Functions 2
-
+/*
 //ES5
 var box5 = {
   color: "green",
@@ -198,3 +198,103 @@ Person.prototype.myFriends5 = function(friends) {
 };
 
 new Person("Manuel").myFriends5(friends);
+*/
+
+//////////////////////////////////////////
+// Lecture: Destructuring
+/*
+//ES6
+const [name, age] = ["Mike", 26];
+console.log(name);
+console.log(age);
+
+const obj = {
+  firstName: "Hector",
+  lastName: "Martinez"
+};
+
+// object syntax
+const { firstName, lastName } = obj;
+console.log(firstName, lastName);
+
+const { firstName: a, lastName: b } = obj;
+console.log(a, b);
+
+// function syntax
+function calcAgeRetirement(year) {
+  const age = new Date().getFullYear() - year;
+  return [age, 65 - age];
+}
+
+const [age2, retirement] = calcAgeRetirement(1990);
+console.log(age2, retirement);
+*/
+
+///////////////////////////////////////////////
+// Lecture: Arrays
+/*
+// querySelector and querySelectorAll return nodeList
+const boxes = document.querySelectorAll(".box");
+
+const boxesArr6 = Array.from(boxes);
+boxesArr6.forEach(cur => (cur.style.background = "dodgerblue"));
+
+for (const cur of boxesArr6) {
+  if (cur.className.includes("blue")) {
+    continue;
+  }
+  cur.textContent = "I changed to blue!";
+}
+
+var ages = [12, 18, 16, 12, 11, 9];
+
+console.log(ages.findIndex(cur => cur >= 18));
+console.log(ages.find(cur => cur >= 18));
+*/
+
+////////////////////////////////////////////
+// Lecture: Spread operator
+/*
+function addFourAges(a, b, c, d) {
+  return a + b + c + d;
+}
+
+var sum1 = addFourAges(18, 38, 12, 21);
+console.log(sum1);
+
+var ages = [18, 38, 12, 21];
+
+const sum2 = addFourAges(...ages);
+console.log(sum2);
+
+const familySmith = ["Joe", "Roe", "Zoe"];
+const familyMeek = ["Millz", "Snupe", "Nicki"];
+const bigFamily = [...familyMeek, "Jay", ...familySmith];
+console.log(bigFamily);
+
+const h = document.querySelector("h1");
+const boxes = document.querySelectorAll(".box");
+const all = [h, ...boxes];
+Array.from(all).forEach(cur => (cur.style.color = "yellow"));
+*/
+
+/////////////////////////////////////////////
+// Lecture: Rest parameters
+
+//ES5
+function isFullAge5() {
+  var argsArr = Array.prototype.slice.call(arguments);
+  argsArr.forEach(function(cur) {
+    console.log(2020 - cur >= 18);
+  });
+}
+
+isFullAge5(1990, 1999, 1987, 2010);
+
+//ES6
+// made the age limit dynamic
+function isFullAge6(limit, ...years) {
+  years.forEach(cur => console.log(2020 - cur >= limit));
+}
+
+isFullAge6(29, 1990, 1999, 1987, 2010);

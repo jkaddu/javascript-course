@@ -702,19 +702,31 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat */ \"./node_modules/core-js/modules/es.array.concat.js\");\n/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _test__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./test */ \"./starter/src/js/test.js\");\n\n// Global app controller\n\nvar num = 33;\nconsole.log(\"I imported \".concat(_test__WEBPACK_IMPORTED_MODULE_1__[\"default\"], \" from another module adn variable num is \").concat(num, \".\"));\n\n//# sourceURL=webpack:///./starter/src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat */ \"./node_modules/core-js/modules/es.array.concat.js\");\n/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _models_Search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./models/Search */ \"./starter/src/js/models/Search.js\");\n/* harmony import */ var _views_SearchView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/SearchView */ \"./starter/src/js/views/SearchView.js\");\n\n// Global app controller\n\n\nconsole.log(\"Using imported functions! \".concat(Object(_views_SearchView__WEBPACK_IMPORTED_MODULE_2__[\"add\"])(_views_SearchView__WEBPACK_IMPORTED_MODULE_2__[\"ID\"], 3), \" and \").concat(Object(_views_SearchView__WEBPACK_IMPORTED_MODULE_2__[\"multiply\"])(5, 3)));\n\n//# sourceURL=webpack:///./starter/src/js/index.js?");
 
 /***/ }),
 
-/***/ "./starter/src/js/test.js":
-/*!********************************!*\
-  !*** ./starter/src/js/test.js ***!
-  \********************************/
+/***/ "./starter/src/js/models/Search.js":
+/*!*****************************************!*\
+  !*** ./starter/src/js/models/Search.js ***!
+  \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconsole.log(\"Imported module\");\n/* harmony default export */ __webpack_exports__[\"default\"] = (123456789);\n\n//# sourceURL=webpack:///./starter/src/js/test.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"I am am exported string\");\n\n//# sourceURL=webpack:///./starter/src/js/models/Search.js?");
+
+/***/ }),
+
+/***/ "./starter/src/js/views/SearchView.js":
+/*!********************************************!*\
+  !*** ./starter/src/js/views/SearchView.js ***!
+  \********************************************/
+/*! exports provided: add, multiply, ID */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"add\", function() { return add; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"multiply\", function() { return multiply; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ID\", function() { return ID; });\nvar add = function add(a, b) {\n  return a + b;\n};\nvar multiply = function multiply(a, b) {\n  return a * b;\n};\nvar ID = 99;\n\n//# sourceURL=webpack:///./starter/src/js/views/SearchView.js?");
 
 /***/ }),
 

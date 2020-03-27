@@ -8,6 +8,7 @@ export const clearInput = () => {
 
 export const clearResults = () => {
   elements.searchResList.innerHTML = "";
+  elements.searchResPage.innerHTML = "";
 };
 /*
 // 'Pasta with tomato and spinach'
@@ -40,7 +41,7 @@ const renderRecipe = recipe => {
             </figure>
             <div class="results__data">
                 <h4 class="results__name">${limitRecipeTitle(recipe.title)}</h4>
-                <p class="results__author">${recipe.publisher_url}</p>
+                <p class="results__author">${recipe.publisher}</p>
             </div>
         </a>
     </li>
@@ -48,6 +49,47 @@ const renderRecipe = recipe => {
   elements.searchResList.insertAdjacentHTML("beforeend", markup);
 };
 
-export const renderResults = recipes => {
-  recipes.forEach(renderRecipe);
+// types are 'prev' or 'next'
+const createButton = (page, type) => `      
+<button class="btn-inline results__btn--${type}"data-goto=${
+  type === "prev" ? page - 1 : page + 1
+}>
+<span>Page ${type === "prev" ? page - 1 : page + 1}</span>
+    <svg class="search__icon">
+        <use href="img/icons.svg#icon-triangle-${
+          type === "prev" ? "left" : "right"
+        }"></use>
+    </svg>
+</button>
+`;
+
+const renderButtons = (page, numResults, resPerPage) => {
+  const pages = Math.ceil(numResults / resPerPage);
+  let button;
+  if (page === 1 && pages > 1) {
+    // button only goes to next page
+    button = createButton(page, "next");
+  } else if (page < pages) {
+    // has both page options
+    button = `
+    ${createButton(page, "prev")}
+    ${createButton(page, "next")}
+    `;
+  } else if (page === pages && pages > 1) {
+    // button only goes to prev page
+    button = createButton(page, "prev");
+  }
+
+  elements.searchResPage.insertAdjacentHTML("afterbegin", button);
+};
+
+export const renderResults = (recipes, page = 1, resPerPage = 10) => {
+  // render results of current page
+  const start = (page - 1) * resPerPage;
+  const end = page * resPerPage;
+
+  recipes.slice(start, end).forEach(renderRecipe);
+
+  //render pagination buttons
+  renderButtons(page, recipes.length, resPerPage);
 };

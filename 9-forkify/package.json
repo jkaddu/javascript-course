@@ -16,6 +16,7 @@
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "core-js": "3",
+    "fractional": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
     "regenerator-runtime": "^0.13.5",
     "webpack": "^4.42.0",

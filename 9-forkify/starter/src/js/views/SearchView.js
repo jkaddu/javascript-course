@@ -10,6 +10,17 @@ export const clearResults = () => {
   elements.searchResList.innerHTML = "";
   elements.searchResPage.innerHTML = "";
 };
+
+export const highLightSelected = id => {
+  const resultsArr = Array.from(document.querySelectorAll(".results__link"));
+  resultsArr.forEach(el => {
+    el.classList.remove("results__link--active");
+  });
+  document
+    .querySelector(`a[href='#${id}']`)
+    .classList.add("results__link--active");
+};
+
 /*
 // 'Pasta with tomato and spinach'
 the acc starts at 0 then, acc + cur.length = 5 which is less than 17 then it pushes 

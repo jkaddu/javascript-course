@@ -17,7 +17,7 @@ export const highLightSelected = id => {
     el.classList.remove("results__link--active");
   });
   document
-    .querySelector(`a[href='#${id}']`)
+    .querySelector(`.results__link[href='#${id}']`)
     .classList.add("results__link--active");
 };
 
@@ -27,7 +27,7 @@ the acc starts at 0 then, acc + cur.length = 5 which is less than 17 then it pus
 the word to the designated array, newTitle = ['Pasta'] and repeats the process with 
 each iteration until the title is in there that is under the limit of 17
 */
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
   const newTitle = [];
   if (title.length > limit) {
     title.split(" ").reduce((acc, cur) => {

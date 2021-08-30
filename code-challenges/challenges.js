@@ -131,34 +131,64 @@
 
 /* Code challenge 3 Objects */
 
-const john = {
-    fullName: 'John Smith',
-    mass: 92,
-    height: 1.95,
+// const john = {
+//     fullName: 'John Smith',
+//     mass: 92,
+//     height: 1.95,
 
-    calcBMI: function() {
-        this.BMI = this.mass/this.height ** 2
-        return this.BMI
+//     calcBMI: function() {
+//         this.BMI = this.mass/this.height ** 2
+//         return this.BMI
+//     }
+// }
+
+// const mark = {
+//     fullName: 'Mark Miller',
+//     mass: 78,
+//     height: 1.69,
+
+//     calcBMI: function() {
+//         this.BMI = this.mass/this.height ** 2
+//         return this.BMI
+//     }
+// }
+
+// john.calcBMI()
+// mark.calcBMI()
+
+// if (john.BMI > mark.BMI) {
+//     console.log(`${john.fullName}'s BMI ${john.BMI} is a higher than ${mark.fullName}'s BMI ${mark.BMI}.`)
+// } else if (mark.BMI > john.BMI) {
+//     console.log(`${mark.fullName}'s BMI ${mark.BMI} is a higher than ${john.fullName}'s BMI ${john.BMI}.`)
+// }
+
+
+
+/* Code challenge 4 Loops */
+
+const bills = [22, 295, 76, 440, 37, 105, 10, 1100, 86, 52]
+
+const tips = []
+
+const totals = []
+
+const calcTip = (bill) => bill >= 50 && 300 >= bill ? bill * .15 : bill * .2
+
+for (let i = 0; i < bills.length; i ++) {
+    const tip = calcTip(bills[i])
+    tips.push(tip)
+    totals.push (tip + bills[i])
+}
+
+console.log(bills, tips, totals)
+
+const calcAverage = function(arr) {
+    let sum = 0
+    for (let i =0; i < arr.length; i++) {
+        // sum = sum + arr[i] or
+        sum += arr[i]
     }
+    return sum/arr.length
 }
 
-const mark = {
-    fullName: 'Mark Miller',
-    mass: 78,
-    height: 1.69,
-
-    calcBMI: function() {
-        this.BMI = this.mass/this.height ** 2
-        return this.BMI
-    }
-}
-
-john.calcBMI()
-mark.calcBMI()
-
-if (john.BMI > mark.BMI) {
-    console.log(`${john.fullName}'s BMI ${john.BMI} is a higher than ${mark.fullName}'s BMI ${mark.BMI}.`)
-} else if (mark.BMI > john.BMI) {
-    console.log(`${mark.fullName}'s BMI ${mark.BMI} is a higher than ${john.fullName}'s BMI ${john.BMI}.`)
-}
-
+console.log(calcAverage(totals))

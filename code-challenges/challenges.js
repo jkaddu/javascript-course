@@ -114,15 +114,51 @@
 
 /* Code challenge 2 Arrays */
 // same calcTip function from line 66 but written using a tenary operator
-const calcTip = (bill) => bill >= 50 && 300 >= bill ? bill * .15 : bill * .2
+// const calcTip = (bill) => bill >= 50 && 300 >= bill ? bill * .15 : bill * .2
 
 
-console.log(calcTip(100))
+// console.log(calcTip(100))
 
-const bills = [125, 555, 44]
+// const bills = [125, 555, 44]
 
-const tips = [calcTip(125), calcTip(555), calcTip(44)]
+// const tips = [calcTip(125), calcTip(555), calcTip(44)]
 
-const total = [(bills[0] + calcTip(125)), (bills[1] + calcTip(555)), (bills[2] + calcTip(44)) ]
+// const total = [(bills[0] + calcTip(125)), (bills[1] + calcTip(555)), (bills[2] + calcTip(44)) ]
 
-console.log(bills, tips, total)
+// console.log(bills, tips, total)
+
+
+
+/* Code challenge 3 Objects */
+
+const john = {
+    fullName: 'John Smith',
+    mass: 92,
+    height: 1.95,
+
+    calcBMI: function() {
+        this.BMI = this.mass/this.height ** 2
+        return this.BMI
+    }
+}
+
+const mark = {
+    fullName: 'Mark Miller',
+    mass: 78,
+    height: 1.69,
+
+    calcBMI: function() {
+        this.BMI = this.mass/this.height ** 2
+        return this.BMI
+    }
+}
+
+john.calcBMI()
+mark.calcBMI()
+
+if (john.BMI > mark.BMI) {
+    console.log(`${john.fullName}'s BMI ${john.BMI} is a higher than ${mark.fullName}'s BMI ${mark.BMI}.`)
+} else if (mark.BMI > john.BMI) {
+    console.log(`${mark.fullName}'s BMI ${mark.BMI} is a higher than ${john.fullName}'s BMI ${john.BMI}.`)
+}
+

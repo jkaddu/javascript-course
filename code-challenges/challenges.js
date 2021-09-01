@@ -1,3 +1,5 @@
+'use stict';
+
 /* Fundamentals Part I */
 /* Code challenge 1 Math Operators */
 
@@ -166,29 +168,104 @@
 
 /* Code challenge 4 Loops */
 
-const bills = [22, 295, 76, 440, 37, 105, 10, 1100, 86, 52]
+// const bills = [22, 295, 76, 440, 37, 105, 10, 1100, 86, 52]
 
-const tips = []
+// const tips = []
 
-const totals = []
+// const totals = []
 
-const calcTip = (bill) => bill >= 50 && 300 >= bill ? bill * .15 : bill * .2
+// const calcTip = (bill) => bill >= 50 && 300 >= bill ? bill * .15 : bill * .2
 
-for (let i = 0; i < bills.length; i ++) {
-    const tip = calcTip(bills[i])
-    tips.push(tip)
-    totals.push (tip + bills[i])
-}
+// for (let i = 0; i < bills.length; i ++) {
+//     const tip = calcTip(bills[i])
+//     tips.push(tip)
+//     totals.push (tip + bills[i])
+// }
 
-console.log(bills, tips, totals)
+// console.log(bills, tips, totals)
 
-const calcAverage = function(arr) {
-    let sum = 0
-    for (let i =0; i < arr.length; i++) {
-        // sum = sum + arr[i] or
-        sum += arr[i]
+// const calcAverage = function(arr) {
+//     let sum = 0
+//     for (let i =0; i < arr.length; i++) {
+//         // sum = sum + arr[i] or
+//         sum += arr[i]
+//     }
+//     return sum/arr.length
+// }
+
+// console.log(calcAverage(totals))
+
+
+
+/* Temperature amplitude calculator */
+
+// const temps = [ -1, -2, -3, -4, 'error', 1, 4, 5, 6, 7]
+// const jerseyNums = [1, 2, 5, 34, 87, 54, 83]
+
+// const calcAmplitude = function(arr) {
+//     let max = arr[0];
+//     let min = arr[0];
+    
+//     for (let i = 0; i < arr.length; i++) {
+//         if (typeof arr[i] !== 'number') continue;
+//         if(arr[i] > max) max = arr[i]
+//         if (arr[i] < min) min = arr[i]
+//     }
+//     console.log(max, min)
+//     return max - min
+// }
+
+// console.log(calcAmplitude(temps))
+// console.log(calcAmplitude(jerseyNums))
+
+// Takes in two arays
+// const calcAmplitudeTwo = function(arr1, arr2) {
+//     const arr = arr1.concat(arr2)
+//     console.log(arr)
+
+//     let max = arr[0];
+//     let min = arr[0];
+    
+//     for (let i = 0; i < arr.length; i++) {
+//         if (typeof arr[i] !== 'number') continue;
+//         if(arr[i] > max) max = arr[i]
+//         if (arr[i] < min) min = arr[i]
+//     }
+//     console.log(max, min)
+//     return max - min
+// }
+
+// console.log(calcAmplitudeTwo(temps, jerseyNums))
+
+
+
+/* KGs to LBs/ LBs to KGs functions */
+
+// const weightConverterKg = (kg) => {
+//    const value =  Math.round(kg * 2.205)
+//    return value
+// }
+
+// const weightConverterLb = (lb) => {
+//    const value =  Math.round(lb/2.205)
+//    return value
+// }
+// console.log(weightConverterKg(110))
+// console.log(weightConverterLb(110))
+
+
+
+/* Debugging Code challenge 1 */
+/* redo at a later date */
+const printForecast = (arr) => {
+    let str = '';
+    for (let i = 0; i < arr.length; i++) {
+        // str = str + `...${arr[i]} degrees celsius in ${i + 1} days`
+        // ^same thing as below but not shortened with +=
+        str += `...${arr[i]} degrees celsius in ${i + 1} days`
     }
-    return sum/arr.length
+    console.log(str)
 }
 
-console.log(calcAverage(totals))
+const temps = [1, 2, 3, 4,]
+printForecast(temps)

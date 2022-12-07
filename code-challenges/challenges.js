@@ -1,5 +1,7 @@
 'use stict';
 
+
+
 /* Fundamentals Part I */
 /* Code challenge 1 Math Operators */
 
@@ -21,19 +23,16 @@
 
 // const markHigherJohn = markBmi > johnBmi
 
-
-// console.log(markBmi, johnBmi, markHigherJohn)
-
+// console.log(Math.round(markBmi), Math.round(johnBmi), markHigherJohn)
 
 
 /* Code Challenge 2 if/else statements */
 
 // if(markBmi > johnBmi) {
-//     console.log(`Mark's BMI ${markBmi} is greater than John's BMI ${johnBmi}`)
+//     console.log(`Mark's BMI of ${Math.round(markBmi)} is greater than John's BMI of ${Math.round(johnBmi)}`)
 // } else {
-//     console.log(`John's BMI ${johnBmi} is greater than Mark's BMI ${markBmi}`)
+//     console.log(`John's BMI of ${johnBmi} is greater than Mark's BMI of ${markBmi}`)
 // }
-
 
 
 /* Code Challenge 3 Comparison/Equality operators */
@@ -60,10 +59,25 @@
 //     console.log('The team scores were not high enough to determine a winner.')
 // }
 
+// const jayNumbers = 10 + 15 + 30;
+// const keemNumbers = 7 + 23 + 17;
+
+// if (jayNumbers >= 20 && jayNumbers > keemNumbers) {
+//     console.log(`Jay won the square off with a score of ${jayNumbers}!`)
+// } else if (keemNumbers >= 20 && keemNumbers > jayNumbers) { console.log(`Keem won the squre off with the score of ${keemNumbers}!`)
+// } else {
+//     console.log("Looks like we're going another round!")
+// }
 
 
 /* Code challenge 4 Ternary Operators */
-// const bill = 350;
+
+// const age = 15;
+
+// const drink = age >= 18 ? 'I like to drink wine!' : 'I like to drink water!';
+
+// console.log(drink)
+// const bill = 100;
 
 // const calcTip = (bill) => {
 //     if(bill >= 50 || bill <= 300) {
@@ -72,6 +86,10 @@
 //         return bill * .2
 //     }
 // }
+
+// const calcTip = bill >= 50 && bill <=300 ? `The bill is ${bill} and the tip is ${bill * .15} bringing the total cost to ${bill + bill * .15}` : `The bill is ${bill} and the tip is ${bill * .2} bringing the total cost to ${bill + bill * .2}`;
+
+// console.log(calcTip)
 
 // console.log(`The bill is ${bill} and the tip is ${tip} and the total value is ${bill + tip}.`)
 
@@ -91,33 +109,33 @@
 
 // console.log(calcAverage(10, 20, 30))
 
-// const chheckWinner = (a, b) => {
-//     if(a >= 2 * b) {
-//         console.log(`Koala's win ${a} to ${b}!`)
-//     } else if(b >= 2 * a) {
-//      console.log(`Dolphins win ${b} to ${a}!`)
+// const chheckWinner = (avgKoalas, avgDolphins) => {
+//     if(avgKoalas >= 2 * avgDolphins) {
+//         console.log(`Koala's win ${avgKoalas} to ${avgDolphins}!`)
+//     } else if(avgDolphins >= 2 * avgKoalas) {
+//      console.log(`Dolphins win ${avgDolphins} to ${avgKoalas}!`)
 //     } else {
-//         console.log( 'There was no winner.')
+//         console.log( 'There is no winner.')
 //     }
 // }
 
 // Data set 1
-// const koalasAvg = calcAverage(65, 54, 49)
-// const dolphinsAvg = calcAverage(44, 23, 71)
+// let koalasAvg = calcAverage(65, 54, 49)
+// let dolphinsAvg = calcAverage(44, 23, 71)
 
+// chheckWinner(koalasAvg, dolphinsAvg)
 // Data set 2
 
-// const koalasAvg = calcAverage(23, 34, 27)
-// const dolphinsAvg = calcAverage(85, 54, 41)
+// koalasAvg = calcAverage(23, 34, 27)
+// dolphinsAvg = calcAverage(85, 54, 41)
 
 // chheckWinner(koalasAvg, dolphinsAvg)
 
 
-
 /* Code challenge 2 Arrays */
-// same calcTip function from line 66 but written using a tenary operator
-// const calcTip = (bill) => bill >= 50 && 300 >= bill ? bill * .15 : bill * .2
 
+// same calcTip function from line 66 but written using a tenary operator
+// const calcTip = (bill) => bill >= 50 && bill <= 300 ? bill * .15 : bill * .2
 
 // console.log(calcTip(100))
 
@@ -128,7 +146,6 @@
 // const total = [(bills[0] + calcTip(125)), (bills[1] + calcTip(555)), (bills[2] + calcTip(44)) ]
 
 // console.log(bills, tips, total)
-
 
 
 /* Code challenge 3 Objects */
@@ -165,7 +182,6 @@
 // }
 
 
-
 /* Code challenge 4 Loops */
 
 // const bills = [22, 295, 76, 440, 37, 105, 10, 1100, 86, 52]
@@ -194,7 +210,6 @@
 // }
 
 // console.log(calcAverage(totals))
-
 
 
 /* Temperature amplitude calculator */
@@ -257,15 +272,15 @@
 
 /* Debugging Code challenge 1 */
 /* redo at a later date */
-const printForecast = (arr) => {
-    let str = '';
-    for (let i = 0; i < arr.length; i++) {
-        // str = str + `...${arr[i]} degrees celsius in ${i + 1} days`
-        // ^same thing as below but not shortened with +=
-        str += `...${arr[i]} degrees celsius in ${i + 1} days`
-    }
-    console.log(str)
-}
+// const printForecast = (arr) => {
+//     let str = '';
+//     for (let i = 0; i < arr.length; i++) {
+//         // str = str + `...${arr[i]} degrees celsius in ${i + 1} days`
+//         // ^same thing as below but not shortened with +=
+//         str += `...${arr[i]} degrees celsius in ${i + 1} days`
+//     }
+//     console.log(str)
+// }
 
-const temps = [1, 2, 3, 4,]
-printForecast(temps)
+// const temps = [1, 2, 3, 4,]
+// printForecast(temps)

@@ -156,3 +156,21 @@ movements.forEach(function (movement, i, array) {
   }
 });
 */
+
+/* Code Challenge */
+// Create a function that checks to see if the dog is an adult(age is greate than 3 years) or a puppy. Then display the age of the adult dogs and let it be know which are the puppies
+
+const juliaDogs = [3, 5, 2, 7, 12];
+const kateDogs = [5, 1, 3, 15, 8];
+
+const dogAge = function (ages) {
+  ages.forEach(function (age, i) {
+    if (age > 3) {
+      console.log(`Dog number ${i + 1} is an adult, and is ${age} years old!`);
+    } else {
+      console.log(`Dog number ${i + 1} is still a puppy!`);
+    }
+  });
+};
+
+dogAge(juliaDogs);

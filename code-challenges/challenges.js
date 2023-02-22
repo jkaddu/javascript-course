@@ -1,10 +1,6 @@
-'use stict';
+"use stict";
 
-
-
-/* Fundamentals Part I */
-/* Code challenge 1 Math Operators */
-
+/* Code Challenge 1 Math Operators */
 // const johnHeight = 1.95;
 // const johnWeight = 92;
 // const markWeight = 78;
@@ -25,15 +21,12 @@
 
 // console.log(Math.round(markBmi), Math.round(johnBmi), markHigherJohn)
 
-
-/* Code Challenge 2 if/else statements */
-
+/* Code Challenge 2 If/Else Statements */
 // if(markBmi > johnBmi) {
 //     console.log(`Mark's BMI of ${Math.round(markBmi)} is greater than John's BMI of ${Math.round(johnBmi)}`)
 // } else {
 //     console.log(`John's BMI of ${johnBmi} is greater than Mark's BMI of ${markBmi}`)
 // }
-
 
 /* Code Challenge 3 Comparison/Equality operators */
 
@@ -69,9 +62,7 @@
 //     console.log("Looks like we're going another round!")
 // }
 
-
 /* Code challenge 4 Ternary Operators */
-
 // const age = 15;
 
 // const drink = age >= 18 ? 'I like to drink wine!' : 'I like to drink water!';
@@ -93,13 +84,11 @@
 
 // console.log(`The bill is ${bill} and the tip is ${tip} and the total value is ${bill + tip}.`)
 
-
-
 /* Fundamentals Part II */
 /* Code Challenge 1 */
 
 // const calcAverage = (a, b, c) => {
-//     const total = a + b + c 
+//     const total = a + b + c
 //     const average = total/3
 //     return average
 // }
@@ -131,8 +120,7 @@
 
 // chheckWinner(koalasAvg, dolphinsAvg)
 
-
-/* Code challenge 2 Arrays */
+/* Code Challenge 2 Arrays */
 
 // same calcTip function from line 66 but written using a tenary operator
 // const calcTip = (bill) => bill >= 50 && bill <= 300 ? bill * .15 : bill * .2
@@ -147,8 +135,7 @@
 
 // console.log(bills, tips, total)
 
-
-/* Code challenge 3 Objects */
+/* Code Challenge 3 Objects */
 
 // const john = {
 //     fullName: 'John Smith',
@@ -181,6 +168,38 @@
 //     console.log(`${mark.fullName}'s BMI ${mark.BMI} is a higher than ${john.fullName}'s BMI ${john.BMI}.`)
 // }
 
+// const apple = {
+//     founded: 1975,
+//     assets: 100000000000,
+//     debts: 100000000,
+//     privtelyOwned: false,
+
+//     netWorth: function() {
+//         this.worth = this.assets - this.debts
+//         return this.worth
+//     }
+// }
+
+// const google = {
+//     founded: 1998,
+//     assets: 1000000000000,
+//     debts: 9800000000,
+//     privtelyOwned: false,
+
+//     netWorth: function() {
+//         this.worth = this.assets - this.debts
+//         return this.worth
+//     }
+// }
+
+// apple.netWorth()
+// google.netWorth()
+
+// if (apple.worth > google.worth) {
+//     console.log("Apple has a greater net worth than Google!")
+// } else {
+//     console.log('Google has a greater net worth than apple!')
+// }
 
 /* Code challenge 4 Loops */
 
@@ -203,7 +222,7 @@
 // const calcAverage = function(arr) {
 //     let sum = 0
 //     for (let i =0; i < arr.length; i++) {
-//         // sum = sum + arr[i] or
+//         // The below expression is equal to sum = sum + arr[i]
 //         sum += arr[i]
 //     }
 //     return sum/arr.length
@@ -211,76 +230,208 @@
 
 // console.log(calcAverage(totals))
 
+/* Temperature Amplitude Calculator Challenge */
 
-/* Temperature amplitude calculator */
+// const temps = [-1, -2, -3, -4, "error", 1, 4, 5, 6, 7];
+// const temps2 = [1, 2, 5, 34, 87, 54, 83];
 
-// const temps = [ -1, -2, -3, -4, 'error', 1, 4, 5, 6, 7]
-// const jerseyNums = [1, 2, 5, 34, 87, 54, 83]
+// const calcAmplitude = function (arr) {
+//   let max = arr[0];
+//   let min = arr[0];
 
-// const calcAmplitude = function(arr) {
-//     let max = arr[0];
-//     let min = arr[0];
-    
-//     for (let i = 0; i < arr.length; i++) {
-//         if (typeof arr[i] !== 'number') continue;
-//         if(arr[i] > max) max = arr[i]
-//         if (arr[i] < min) min = arr[i]
-//     }
-//     console.log(max, min)
-//     return max - min
-// }
+//   for (let i = 0; i < arr.length; i++) {
+//     let currVal = arr[i];
 
-// console.log(calcAmplitude(temps))
-// console.log(calcAmplitude(jerseyNums))
+//     if (typeof arr[i] !== "number") continue;
+//     if (currVal > max) max = currVal;
+//     if (currVal < min) min = currVal;
+//   }
+//   console.log(max, min);
+//   return max - min;
+// };
+
+// console.log(calcAmplitude(temps));
+// console.log(calcAmplitude(temps2));
 
 // Takes in two arays
-// const calcAmplitudeTwo = function(arr1, arr2) {
-//     const arr = arr1.concat(arr2)
-//     console.log(arr)
+// const calcAmplitudeTwo = function (arr1, arr2) {
+//   const arr = arr1.concat(arr2);
 
-//     let max = arr[0];
-//     let min = arr[0];
-    
-//     for (let i = 0; i < arr.length; i++) {
-//         if (typeof arr[i] !== 'number') continue;
-//         if(arr[i] > max) max = arr[i]
-//         if (arr[i] < min) min = arr[i]
-//     }
-//     console.log(max, min)
-//     return max - min
-// }
+//   let max = arr[0];
+//   let min = arr[0];
 
-// console.log(calcAmplitudeTwo(temps, jerseyNums))
+//   for (let i = 0; i < arr.length; i++) {
+//     if (typeof arr[i] !== "number") continue;
+//     if (arr[i] > max) max = arr[i];
+//     if (arr[i] < min) min = arr[i];
+//   }
+//   console.log(max, min);
+//   return max - min;
+// };
 
+// console.log(calcAmplitudeTwo(temps, temps2));
 
+/* KGs to LBs/ LBs to KGs Challenge */
 
-/* KGs to LBs/ LBs to KGs functions */
+// const weightConvertKgToLb = (kg) => {
+//   const value = Math.round(kg * 2.205);
+//   return `That is ${value} pounds!`;
+// };
 
-// const weightConverterKg = (kg) => {
-//    const value =  Math.round(kg * 2.205)
-//    return value
-// }
+// const weightConvertLbToKg = (lb) => {
+//   const value = Math.round(lb / 2.205);
+//   return `That is ${value} kilograms!`;
+// };
+// console.log(weightConvertKgToLb(100));
+// console.log(weightConvertLbToKg(110));
 
-// const weightConverterLb = (lb) => {
-//    const value =  Math.round(lb/2.205)
-//    return value
-// }
-// console.log(weightConverterKg(110))
-// console.log(weightConverterLb(110))
+/* Debugging Code Challenge 1 */
 
-
-
-/* Debugging Code challenge 1 */
-/* redo at a later date */
 // const printForecast = (arr) => {
-//     let str = '';
-//     for (let i = 0; i < arr.length; i++) {
-//         // str = str + `...${arr[i]} degrees celsius in ${i + 1} days`
-//         // ^same thing as below but not shortened with +=
-//         str += `...${arr[i]} degrees celsius in ${i + 1} days`
-//     }
-//     console.log(str)
+//   let str = "";
+//   for (let i = 0; i < arr.length; i++) {
+//     // str = str + `...${arr[i]} degrees celsius in ${i + 1} days`
+//     // short hand for statement above
+//     str += `it'll be ${arr[i]} degrees celsius in ${i + 1} days...`;
+//   }
+//   console.log("..." + str);
+// };
+
+// const forecast = [1, 2, 3, 4];
+// printForecast(forecast);
+
+/* Destructuring Challenge */
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
+    ],
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+// Array of playes for each team
+// const [players1, players2] = game.players;
+// console.log(players1, players2);
+
+// Arrays of goalkeeper(first player in array) and the field players(rest of players in array)
+// const [gk1, ...fieldPlayers1] = players1;
+// const [gk2, ...fieldPlayers2] = players2;
+// console.log(gk1, gk2);
+// console.log(fieldPlayers1, fieldPlayers2);
+
+// Array of players from both teams
+// const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
+
+// Array of players from team 1 and the subsitute players(addded them)
+// const players1Final = [...players1, "Thiago", "Continho", "Perisic"];
+// console.log(players1Final);
+
+// Destructured the game odds object to get the individual odds
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
+// console.log(team1, draw, team2);
+
+// Created function that shows who scored
+// const printGoals = function (...players) {
+//   for (let i = 0; i < players.length; i++)
+//     console.log(`${players[i]} scored a goal!`);
+// };
+
+// printGoals("Thiago", "Continho", "Perisic");
+// printGoals(...game.scored);
+
+// Using logical operator to see who has betters odds to win without using if/else statement or tenary operator
+// team1 < team2 && console.log("Team 1 is more likely to win!");
+// team2 < team1 && console.log("Team 2 is more likely to win!");
+
+/* For Of Challenge */
+// Print the goal and person who scored using a For Of loop
+// Entries method can be used on an array to get the key/value pairs
+// for (const [key, player] of game.scored.entries()) {
+//   console.log(`Goal ${key + 1}: Scored by ${player}`);
 // }
 
-// const temps = [1, 2, 3, 4,]
-// printForecast(temps)
+// Print the total average of the odds
+// Object.values is used on an object to turn it into an array with key/value pairs
+// const probablity = Object.values(game.odds);
+// console.log(probablity);
+// let average = 0;
+// for (const odd of probablity) average += odd;
+// average /= probablity.length;
+// console.log(`The odds to win are ${average}`);
+
+// Object.values is used on an object to turn it into an array with key/value pairs
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   const teamStr = team === "x" ? "draw" : `victory for ${game[team]}`;
+//   console.log(`Odds of ${teamStr} are ${odd}`);
+// }
+
+/* Data Structures Operators Challenge */
+
+const gameEvents = new Map([
+  [17, "⚽️ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽️ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🔶 Yellow card"],
+  [69, "🔴 Red card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽️ GOAL"],
+  [80, "⚽️ GOAL"],
+  [92, "🔶 Yellow card"],
+]);
+
+// Created an array with no duplicate values
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// Delete an event from the list of events
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// Dynamically implementing average time of events
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes.`
+);
+
+// Looping through array
+for (const [min, value] of gameEvents) {
+  const half = min <= 45 ? "FIRST" : "SECOND";
+  console.log(`${half} HALF! ${min}: ${value}`);
+}

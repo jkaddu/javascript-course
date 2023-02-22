@@ -1,103 +1,96 @@
 ///////////////////////////////////////
 // Lecture: Hoisting
 
-// example of hoisting
-calculateAge(1998);
+// Hoisting is when you call the function before you have created the function
+// calculateAge(1998);
 
 // function declaration
-function calculateAge(year) {
-  console.log(2020 - year);
-}
+// function calculateAge(year) {
+//   console.log(2023 - year);
+// }
 
 // function expression
-var retirement = function(year) {
-  console.log(65 - (2020 - year));
-};
-retirement(1990);
+// const retirement = function (year) {
+//   console.log(65 - (2020 - year));
+// };
+// retirement(1990);
 
-console.log(age);
-var age = 29;
+// const age = 89;
 
-function foo() {
-  var age = 65;
-  console.log(age);
-}
-foo();
-console.log(age);
+// function foo() {
+//   const age = 65;
+//   console.log(age);
+// }
+// foo();
+
+// console.log(age);
 ///////////////////////////////////////
-// Lecture: Scoping
+// Lecture: Hoisting and Scope
 
-// First scoping example
+// First Hoisting and Scope example
 
-/*
-var a = 'Hello!';
-first();
+// const a = "Hello!";
+// Hoisting: Calling the function before you create it
+// first();
 
-function first() {
-    var b = 'Hi!';
-    second();
+// function first() {
+//   const b = "Hi!";
+//   second();
 
-    function second() {
-        var c = 'Hey!';
-        console.log(a + b + c);
-    }
-}
-*/
+//   function second() {
+//     const c = "Hey!";
+//     console.log(a + " " + b + " " + c);
+//   }
+// }
 
-// Example to show the differece between execution stack and scope chain
+// Example to show scope chain
 
-/*
-var a = 'Hello!';
-first();
+// const a = "Hi";
+// first();
 
-function first() {
-    var b = 'Hi!';
-    second();
+// function first() {
+//   const b = "there";
+//   second();
 
-    function second() {
-        var c = 'Hey!';
-        third()
-    }
-}
+//   function second() {
+//     const c = "Michael";
+//     third();
 
-function third() {
-    var d = 'John';
-    console.log(a + b + c + d);
-}
-*/
+//     function third() {
+//       const d = ", bye!";
+//       console.log(a + " " + b + " " + c + d);
+//     }
+//   }
+// }
 
 ///////////////////////////////////////
 // Lecture: The this keyword
 
-// console.log(this);\
+// The 'this' keyword here refers to the window/global object if its not within an object
+// console.log(this);
 
-// calculateAge(1985);
-// function calculateAge(year) {
-//   console.log(2020 - year);
-//   console.log(this);
-// }
+// const john = {
+//   name: "John",
+//   yearOfBirth: 1985,
+//   calculateAge: function () {
+//     // The 'this' keyword here refers to the properties (name, yearOfBirth and calculateAge function) within the john object
+//     console.log(this);
+//     console.log(2020 - this.yearOfBirth);
+//     // The 'this' keyword in the inner function refers to the window/global object
+//     function innerFunction() {
+//       console.log(this);
+//     }
+//     innerFunction();
+//   },
+// };
 
-var john = {
-  name: "John",
-  yearOfBirth: 1985,
-  calculateAge: function() {
-    console.log(this);
-    console.log(2020 - this.yearOfBirth);
-    // the 'keyword' in the inner function refers to the window/global object
-    // function innerFunction() {
-    //   console.log(this);
-    // }
-    // innerFunction();
-  }
-};
+// john.calculateAge();
 
-john.calculateAge();
+// const mike = {
+//   name: "Mike",
+//   yearOfBirth: 1984,
+// };
 
-var mike = {
-  name: "Mike",
-  yearOfBirth: 1984
-};
-
-// allows Mike to have the same object as John
-mike.calculateAge = john.calculateAge;
-mike.calculateAge();
+// Allows Mike to have access to the John objects calculateAge function
+// mike.calculateAge = john.calculateAge;
+// mike.calculateAge();

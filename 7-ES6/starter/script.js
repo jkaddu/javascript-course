@@ -278,23 +278,176 @@ const all = [h, ...boxes];
 Array.from(all).forEach(cur => (cur.style.color = "yellow"));
 */
 
-/////////////////////////////////////////////
-// Lecture: Rest parameters
+/* Higher Order Functions */
 
-//ES5
-function isFullAge5() {
-  var argsArr = Array.prototype.slice.call(arguments);
-  argsArr.forEach(function(cur) {
-    console.log(2020 - cur >= 18);
-  });
-}
+// const oneWord = function (str) {
+//   // The / /g characters grab the spaces in a sentence/word and replaces them with no space
+//   return str.replace(/ /g, "").toLowerCase();
+// };
+// console.log(oneWord("Where da Hood At "));
+// console.log(oneWord("Hey There"));
 
-isFullAge5(1990, 1999, 1987, 2010);
+// const upperFirstWord = function (str) {
+//   const [first, ...other] = str.split(" ");
+//   return [first.toUpperCase(), ...other].join(" ");
+// };
+// console.log(upperFirstWord("is this actually working"));
+// console.log(upperFirstWord("yes this is working"));
 
-//ES6
-// made the age limit dynamic
-function isFullAge6(limit, ...years) {
-  years.forEach(cur => console.log(2020 - cur >= limit));
-}
+// Higher Order Function
+// const transformer = function (str, fn) {
+//   console.log(`The original string: ${str}`);
+//   console.log(`Tranform this string: ${fn(str)}`);
+// };
+// transformer("Will this be one word", oneWord);
 
-isFullAge6(29, 1990, 1999, 1987, 2010);
+/* Function Returning a Function */
+
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// By assigning the greet function to the greeterHey variable it stores the returned function within the variable making greeterHey a function
+// const greeterHey = greet("Hey");
+// greeterHey("Tom!");
+// greeterHey("Mike!");
+
+// By calling a function twice(the two instances of parentheses) it calls the returned function with the second call
+// greet("Sup")("Sean");
+
+// Challenge, write same function using arrow syntax
+// const greet2 = (greeting) => {
+//   return (greeterHey2 = (name) => {
+//     return console.log(`${greeting} ${name}`);
+//   });
+// };
+
+// greet2("Sup")("Dion");
+// greet2("Sup")("Javon");
+
+// Simpler way of doing so
+// const greet3 = (greeting) => (name) => console.log(`${greeting} ${name}`);
+
+// greet3("Sup")("Avery");
+// greet3("Sup")("Kiko");
+
+/* Call and Apply methods */
+
+// const soulPlane = {
+//   airline: "SoulPlane",
+//   iataCode: "SP",
+//   bookings: [],
+//   // Book parameters are flightNum, name
+//   book(fligtNum, name) {
+//     console.log(
+//       `${name} booked a seat on ${this.airline}, flight: ${this.iataCode}${fligtNum}`
+//     );
+//     this.bookings.push({ flight: `${this.iataCode}${fligtNum}`, name });
+//   },
+// };
+
+// soulPlane.book(321, "Joshua Kaddu");
+// soulPlane.book(321, "Niya Blue");
+// console.log(soulPlane);
+
+// const africaWings = {
+//   airline: "AfricaWings",
+//   iataCode: "AW",
+//   bookings: [],
+// };
+
+// const book = soulPlane.book;
+
+// Call method
+// It is used to set the This keyword to the specified object you want to use with the first parameter. In the example below it is the africaWings object and the next two arguments are the parameters from the Book method
+// book.call(africaWings, 432, "John Doe");
+// console.log(africaWings);
+
+// Apply method
+// It does the same thing as the call method but takes an array of data for its second parameter, not used as much in modern javaScript
+// const flightData = [543, "Jane Smith"];
+// book.apply(africaWings, flightData);
+
+// Below we are accomplishing the same thing using the Call method with the spread operator
+// book.call(africaWings, ...flightData);
+
+// console.log(africaWings);
+
+// Bind method
+// book.call(jamaicaFLy, 765, "Bob Marley");
+
+// const jamaicaFly = {
+//   airline: "JamaicaFly",
+//   iataCode: "JF",
+//   bookings: [],
+// };
+// const bookJF = book.bind(jamaicaFly);
+// bookJF(765, "Bob Marley");
+// console.log(jamaicaFly);
+
+// const addTax = (rate, value) => value + value * rate;
+// console.log(addTax(0.2, 250));
+
+/* Closures */
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+// Example 2 of a Closure
+
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 77;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+
+// Reassigning the f function
+
+h();
+f();
+
+// Example 3 of a Closure
+
+const boardPassengers = function (n, wait) {
+  const perGRoup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are boarding all ${n} passengers!`);
+
+    console.log(`There are 3 groups, each with ${perGRoup} passengers! `);
+  }, wait * 1000);
+
+  console.log(`We will start boarding in ${wait} seconds!`);
+};
+
+boardPassengers(90, 30);
+
+/* Closures Code Challenge */

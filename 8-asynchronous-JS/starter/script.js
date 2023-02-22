@@ -80,6 +80,21 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const createUsernames = function (accounts) {
+  accounts.forEach(function (account) {
+    account.username = account.owner
+      .toLocaleLowerCase()
+      .split(" ")
+      .map(
+        // Done using an arrow function
+        (name) => name[0]
+        // function (name) {
+        //   return name[0];}
+      )
+      .join("");
+  });
+};
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -95,7 +110,7 @@ const currencies = new Map([
 /////////////////////////////////////////////////
 
 // let arr = ["a", "b", "c", "d", "e", "f"];
-/* Array Methods */
+/* Basic Array Methods */
 /*
 // Slice Method (Doesn't change original array)
 // Gives all elements in array from position 2
@@ -158,6 +173,7 @@ movements.forEach(function (movement, i, array) {
 */
 
 /* Code Challenge */
+/*
 // Create a function that checks to see if the dog is an adult(age is greate than 3 years) or a puppy. Then display the age of the adult dogs and let it be know which are the puppies
 
 const juliaDogs = [3, 5, 2, 7, 12];
@@ -174,3 +190,76 @@ const dogAge = function (ages) {
 };
 
 dogAge(juliaDogs);
+*/
+
+/* Map, Filter and Reduce */
+
+// Map Method (Goes over all elements in an array and creates a new one)
+/*
+const movements = [200, 450, -400, 3000, 650, -130, -70, 1300];
+
+const euroToUsd = 1.1;
+
+const movementsUsd = movements.map(function (mov) {
+  return Math.round(mov * euroToUsd);
+});
+// Arrow function version
+// const movementsUsd = movements.map((mov) => Math.round(mov * euroToUsd));
+
+console.log(movements);
+console.log(movementsUsd);
+
+const movementsDescription = movements.map(function (mov, i, arr) {
+  // Done using the tenary operator
+  return `Position ${
+    i + 1
+  }: You ${mov > 0 ? "deposited " : "withdrew"} ${Math.abs(mov)}`;
+  // if (mov > 0) {
+  //   return `Position ${i + 1}: You deposited ${mov}`;
+  // } else {
+  //   return `Position ${i + 1}: You withdrew ${Math.abs(mov)}`;
+  // }
+});
+
+console.log(movementsDescription);
+*/
+
+/* Computing Usernames */
+/*
+const user1 = "Steven Tyler Williams";
+
+const createUsernames = function (accounts) {
+  accounts.forEach(function (account) {
+    account.username = account.owner
+      .toLocaleLowerCase()
+      .split(" ")
+      .map(
+        // Done using an arrow function
+        (name) => name[0]
+        // function (name) {
+        //   return name[0];}
+      )
+      .join("");
+  });
+};
+// Adds the property username to the accounts objects(account1, account2, etc) through the accounts array, considered a side effect because it doesn't change the original array
+createUsernames(accounts);
+console.log(accounts);
+*/
+/* Filter Method */
+
+const movements = [200, 450, -400, 3000, 650, -130, -70, 1300];
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposits);
+
+// Using the 'for of' loop
+const depositsFor = [];
+for (const mov of movements) {
+  if (mov > 0) {
+    depositsFor.push(mov);
+  }
+}
+console.log(depositsFor);

@@ -1,54 +1,54 @@
 /* Destructuring Arrays */
+/*
+const restaurant = {
+  name: "Classic Italian",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  startMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotta"],
 
-// const restaurant = {
-//   name: "Classic Italian",
-//   location: "Via Angelo Tavanti 23, Firenze, Italy",
-//   categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-//   startMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-//   mainMenu: ["Pizza", "Pasta", "Risotta"],
+  order: function (starterIndex, mainIndex) {
+    return [this.startMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+};
 
-//   order: function (starterIndex, mainIndex) {
-//     return [this.startMenu[starterIndex], this.mainMenu[mainIndex]];
-//   },
-// };
+const arr = [2, 3, 4];
 
-// const arr = [2, 3, 4];
+const a = arr[0];
+const b = arr[1];
+const c = arr[2];
 
-// const a = arr[0];
-// const b = arr[1];
-// const c = arr[2];
+// Small example of destructuring
+const [x, y, z] = arr;
+console.log(x, y, z);
 
-// // Small example of destructuring
-// const [x, y, z] = arr;
-// console.log(x, y, z);
+// Example of getting the 1st and 3rd elements in an array
+let [first, , second] = restaurant.categories;
+console.log(first, second);
 
-// // Example of getting the 1st and 3rd elements in an array
-// let [first, , second] = restaurant.categories;
+// Allows you to switch the values of the properties in an array
+// const temp = first;
+// first = second;
+// second = temp;
 // console.log(first, second);
 
-// // Allows you to switch the values of the properties in an array
-// // const temp = first;
-// // first = second;
-// // second = temp;
-// // console.log(first, second);
+// Better way to do it using destructing
+[first, second] = [second, first];
+console.log(first, second);
 
-// // Better way to do it using destructing
-// [first, second] = [second, first];
-// console.log(first, second);
+const [starter, mainDish] = restaurant.order(2, 0);
+console.log(starter, mainDish);
 
-// const [starter, mainDish] = restaurant.order(2, 0);
-// console.log(starter, mainDish);
+// Destructuring a nested array
+const nested = [4, 5, [7, 8]];
+const [h, , [j, k]] = nested;
+console.log(h, j, k);
 
-// // Destructuring a nested array
-// const nested = [4, 5, [7, 8]];
-// const [h, , [j, k]] = nested;
-// console.log(h, j, k);
-
-// // Default Values
-// // If you don't know how many items are in an array, you can set default values so if there isn't an item at that index it'll go with the default value
-// const [v = 1, n = 1, m = 1] = [9, 0];
-// console.log(v, n, m);
-
+// Default Values
+// If you don't know how many items are in an array, you can set default values so if there isn't an item at that index it'll go with the default value
+const [v = 1, n = 1, m = 1] = [9, 0];
+console.log(v, n, m);
+*/
 /* Destructurin Objects */
 
 // const restaurant = {
@@ -353,53 +353,54 @@ console.log(persons2);
 // }
 
 /* Enhanced Object Lierals */
-// const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
-// // Using array destructuring to add property name(example of new enhancements)
-// const hours = {
-//   [weekdays[3]]: {
-//     open: 10,
-//     close: 3,
-//   },
-//   [weekdays[4]]: {
-//     open: 10,
-//     close: 4,
-//   },
-//   [weekdays[5]]: {
-//     open: 10,
-//     close: 7,
-//   },
-// };
+/*
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+// Using array destructuring to add property name(example of new enhancements)
+const hours = {
+  [weekdays[3]]: {
+    open: 10,
+    close: 3,
+  },
+  [weekdays[4]]: {
+    open: 10,
+    close: 4,
+  },
+  [weekdays[5]]: {
+    open: 10,
+    close: 7,
+  },
+};
 
-// const restaurant = {
-//   name: "Classic Italian",
-//   location: "Via Angelo Tavanti 23, Firenze, Italy",
-//   categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-//   startMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-//   mainMenu: ["Pizza", "Pasta", "Risotta"],
+const restaurant = {
+  name: "Classic Italian",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  startMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotta"],
 
-//   // ES6 enhanced object literal for adding object
-//   hours,
+  // ES6 enhanced object literal for adding object
+  hours,
 
-//   // ES6 enhanced object literal for writing functions
-//   order(starterIndex, mainIndex) {
-//     return [this.startMenu[starterIndex], this.mainMenu[mainIndex]];
-//   },
+  // ES6 enhanced object literal for writing functions
+  order(starterIndex, mainIndex) {
+    return [this.startMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
-//   orderDelivery({ starterIndex = 1, mainIndex = 0, location, time }) {
-//     console.log(
-//       `Order Received: ${this.startMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${location} at ${time}`
-//     );
-//   },
-// };
+  orderDelivery({ starterIndex = 1, mainIndex = 0, location, time }) {
+    console.log(
+      `Order Received: ${this.startMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${location} at ${time}`
+    );
+  },
+};
 
-// console.log(restaurant);
-// restaurant.orderDelivery({
-//   startIndex: 0,
-//   mainIndex: 0,
-//   location: "Park Ave",
-//   time: "8pm",
-// });
-
+console.log(restaurant);
+restaurant.orderDelivery({
+  startIndex: 0,
+  mainIndex: 0,
+  location: "Park Ave",
+  time: "8pm",
+});
+*/
 /* Looping Objects: Object Keys, Values and Entries */
 
 // const restaurant = {

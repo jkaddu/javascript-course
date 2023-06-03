@@ -217,3 +217,104 @@ restaurant.orderDelivery({
   time: "8pm",
 });
 */
+
+const originalFlavors = [
+  "Banana Nut Fudge",
+  "Black Walnut",
+  "Burgundy Cherry",
+  "Butterscotch Ribbon",
+  "Cherry Macaron",
+  "Chocolate",
+  "Chocolate Almond",
+  "Chocolate Chip",
+  "Chocolate Fudge",
+  "Chocolate Mint",
+  "Chocolate Ribbon",
+  "Coffee",
+  "Coffee Candy",
+  "Date Nut",
+  "Eggnog",
+  "French Vanilla",
+  "Green Mint Stick",
+  "Lemon Crisp",
+  "Lemon Custard",
+  "Lemon Sherbet",
+  "Maple Nut",
+  "Orange Sherbet",
+  "Peach",
+  "Peppermint Fudge Ribbon",
+  "Peppermint Stick",
+  "Pineapple Sherbet",
+  "Raspberry Sherbet",
+  "Rocky Road",
+  "Strawberry",
+  "Vannilla",
+  "Vanilla Burnt Almond",
+];
+
+const is2Flavors = ["grape", "cherry"];
+
+/* Creating a copy of an array with the argument being an array */
+function copy(arr) {
+  return [...arr];
+}
+console.log(copy(originalFlavors));
+
+/* Confirm that an array is 31 flavors */
+function is31Flavors(arr) {
+  if (arr.length === 31) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(is31Flavors(originalFlavors));
+console.log(is31Flavors(is2Flavors));
+
+/* Add a flovor to the beginning of the array as a string */
+function addFlvaor(arr, string) {
+  arr.unshift(string);
+  return arr;
+}
+console.log(addFlvaor(originalFlavors, "Vanilla Bean"));
+
+/* Remove an item form the end of the array */
+
+function removeLastFlavor(arr) {
+  arr.pop();
+  return arr;
+}
+console.log(removeLastFlavor(originalFlavors));
+
+/* Get flavor by index */
+function getFlavorByIndex(arr, number) {
+  return arr[number];
+}
+console.log(getFlavorByIndex(originalFlavors, 10));
+
+/* Remove flavor by name */
+function removeFlovrByName(arr, flavor) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === flavor) {
+      arr.splice(i, 1);
+      console.log(`${arr[i]} was removed`);
+    } else if (arr[i] !== flavor) {
+      console.log("Not a flavor we have");
+    }
+    return arr;
+  }
+}
+console.log(removeFlovrByName(originalFlavors, "Vanilla Bean"));
+
+/* Filter by name and return an array with those names */
+function filterByFlavor(arr, flavor) {
+  let arrWord = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].includes(flavor)) {
+      arrWord.push(arr[i]);
+    }
+  }
+
+  return arrWord;
+}
+console.log(filterByFlavor(originalFlavors, "Lemon"));

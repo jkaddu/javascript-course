@@ -218,6 +218,8 @@ restaurant.orderDelivery({
 });
 */
 
+/* Array Challenges */
+
 const originalFlavors = [
   "Banana Nut Fudge",
   "Black Walnut",
@@ -255,66 +257,138 @@ const originalFlavors = [
 const is2Flavors = ["grape", "cherry"];
 
 /* Creating a copy of an array with the argument being an array */
-function copy(arr) {
-  return [...arr];
-}
-console.log(copy(originalFlavors));
+// function copy(arr) {
+//   return [...arr];
+// }
+// // console.log(copy(originalFlavors));
+// // Reformatted to an arrow function
+// const copy2 = (arr) => [...arr];
+// console.log(copy2(originalFlavors));
 
 /* Confirm that an array is 31 flavors */
-function is31Flavors(arr) {
-  if (arr.length === 31) {
-    return true;
-  } else {
-    return false;
-  }
-}
-console.log(is31Flavors(originalFlavors));
-console.log(is31Flavors(is2Flavors));
+// function is31Flavors(arr) {
+//   if (arr.length === 31) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+// // console.log(is31Flavors(originalFlavors));
+// // console.log(is31Flavors(is2Flavors));
+// // Used an arrow function with a ternary operator
+// const is31Flavors2 = (arr) => (arr.length === 31 ? true : false);
+
+// console.log(is31Flavors2(originalFlavors));
+// console.log(is31Flavors2(is2Flavors));
 
 /* Add a flovor to the beginning of the array as a string */
-function addFlvaor(arr, string) {
-  arr.unshift(string);
-  return arr;
-}
-console.log(addFlvaor(originalFlavors, "Vanilla Bean"));
+// function addFlvaor(arr, string) {
+//   arr.unshift(string);
+//   return arr;
+// }
+// // console.log(addFlvaor(originalFlavors, "Vanilla Bean"));
+// // Converted it to an arrow function
+// const addFlavor2 = (arr, string) => {
+//   arr.unshift(string);
+//   return arr;
+// };
+// console.log(addFlavor2(originalFlavors, "Vanilla Bean"));
 
 /* Remove an item form the end of the array */
 
-function removeLastFlavor(arr) {
-  arr.pop();
-  return arr;
-}
-console.log(removeLastFlavor(originalFlavors));
+// function removeLastFlavor(arr) {
+//   arr.pop();
+//   return arr;
+// }
+// // console.log(removeLastFlavor(originalFlavors));
+
+// const removeLastFlavor2 = (arr) => {
+//   arr.pop();
+//   return arr;
+// };
+// console.log(removeLastFlavor2(originalFlavors));
 
 /* Get flavor by index */
-function getFlavorByIndex(arr, number) {
-  return arr[number];
-}
-console.log(getFlavorByIndex(originalFlavors, 10));
+// function getFlavorByIndex(arr, number) {
+//   return arr[number];
+// }
+// // console.log(getFlavorByIndex(originalFlavors, 10));
+
+// const getFlavorByIndex2 = (arr, number) => arr[number];
+// console.log(getFlavorByIndex2(originalFlavors, 10));
 
 /* Remove flavor by name */
-function removeFlovrByName(arr, flavor) {
-  for (let i = 0; i < arr.length; i++) {
+function removeFlavorByName(arr, flavor) {
+  for (let i in arr) {
     if (arr[i] === flavor) {
       arr.splice(i, 1);
-      console.log(`${arr[i]} was removed`);
-    } else if (arr[i] !== flavor) {
-      console.log("Not a flavor we have");
+      // console.log(`${arr[i]}`);
+      console.log(`${flavor} was removed`);
+    } else {
+      console.log(` ${flavor} is not a flavor we have`);
     }
-    return arr;
   }
+  return arr;
 }
-console.log(removeFlovrByName(originalFlavors, "Vanilla Bean"));
+console.log(removeFlavorByName(originalFlavors, "Rocky Road"));
+
+// const removeFlavorByName2 = (arr, flavor) =>
+//   arr.map(function (ulavor) {
+//     flavor === flavor ? arr.splice(dlavor, 1) : console.log("Not a flavor");
+//   });
+// console.log(removeFlovrByName2(originalFlavors, "Vanilla Bean"));
 
 /* Filter by name and return an array with those names */
-function filterByFlavor(arr, flavor) {
-  let arrWord = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].includes(flavor)) {
-      arrWord.push(arr[i]);
-    }
-  }
+// function filterByFlavor(arr, flavor) {
+//   let arrWord = [];
+//   for (let i in arr) {
+//     if (arr[i].includes(flavor)) {
+//       arrWord.push(arr[i]);
+//     }
+//   }
 
-  return arrWord;
+//   return arrWord;
+// }
+// console.log(filterByFlavor(originalFlavors, "Lemon"));
+
+function eightBall() {
+  const answer = Math.floor(Math.random() * 8);
+  let fortunes = [
+    "Yes, definitely",
+    "You can rely on it",
+    "Without a doubt",
+    "Most likely",
+    "Hmm...I dont know",
+    "Yikes...Nope",
+    "Try again",
+    "Very doubtful",
+  ];
+
+  fortunes = fortunes[answer];
+  console.log(fortunes);
 }
-console.log(filterByFlavor(originalFlavors, "Lemon"));
+eightBall();
+
+// Lets abrtact away the random number generator aka make the random number generator its own function and then place it in our eightBall function
+
+function numberGenerator(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function eightBall2() {
+  let fortunes = [
+    "Yes, definitely",
+    "You can rely on it",
+    "Without a doubt",
+    "Most likely",
+    "Hmm...I dont know",
+    "Yikes...Nope",
+    "Try again",
+    "Very doubtful",
+  ];
+
+  return (fortunes = fortunes[numberGenerator(0, 8)]);
+}
+console.log(eightBall2());

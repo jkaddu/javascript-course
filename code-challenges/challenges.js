@@ -1,26 +1,28 @@
 "use stict";
 
 /* Code Challenge 1 Math Operators */
-// const johnHeight = 1.95;
-// const johnWeight = 92;
-// const markWeight = 78;
-// const markHeight = 1.69;
+/*
+const johnHeight = 1.95;
+const johnWeight = 92;
+const markWeight = 78;
+const markHeight = 1.69;
 
 // const johnHeight = 1.76;
 // const johnWeight = 85;
 // const markWeight = 95;
 // const markHeight = 1.88;
 
-// BMI = weight / height ** 2
+// ** symbolizies squared ie 2^2 = 4 or 3^2 = 9
+// BMI = weight / height ** 2;
 
-// const johnBmi = johnWeight / johnHeight ** 2
+const johnBmi = johnWeight / johnHeight ** 2;
 
-// const markBmi = markWeight / markHeight ** 2
+const markBmi = markWeight / markHeight ** 2;
 
-// const markHigherJohn = markBmi > johnBmi
+const markHigherJohn = markBmi > johnBmi;
 
-// console.log(Math.round(markBmi), Math.round(johnBmi), markHigherJohn)
-
+console.log(Math.round(markBmi), Math.round(johnBmi), markHigherJohn);
+*/
 /* Code Challenge 2 If/Else Statements */
 // if(markBmi > johnBmi) {
 //     console.log(`Mark's BMI of ${Math.round(markBmi)} is greater than John's BMI of ${Math.round(johnBmi)}`)
@@ -122,7 +124,7 @@
 
 /* Code Challenge 2 Arrays */
 
-// same calcTip function from line 66 but written using a tenary operator
+// same calcTip function from line 73 but written using a tenary operator
 // const calcTip = (bill) => bill >= 50 && bill <= 300 ? bill * .15 : bill * .2
 
 // console.log(calcTip(100))
@@ -342,7 +344,7 @@ const game = {
   },
 };
 
-// Array of playes for each team
+// Array of players for each team
 // const [players1, players2] = game.players;
 // console.log(players1, players2);
 
@@ -435,3 +437,29 @@ for (const [min, value] of gameEvents) {
   const half = min <= 45 ? "FIRST" : "SECOND";
   console.log(`${half} HALF! ${min}: ${value}`);
 }
+
+// CODE WARS
+
+// You will be given an array and a limit value. You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
+// You can assume all values in the array are numbers.
+
+function smallEnough(arr, limit) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > limit) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function smallEnough2(a, limit) {
+  return Math.max(...a) <= limit;
+}
+
+function smallEnough3(a, limit) {
+  return a.every((x) => x <= limit);
+}
+console.log(smallEnough3([66, 101], 200));
+console.log(smallEnough3([78, 117, 110, 99, 104, 117, 107, 115], 100));
+console.log(smallEnough3([101, 45, 75, 105, 99, 107], 107));
+console.log(smallEnough3([80, 117, 115, 104, 45, 85, 112, 115], 120));

@@ -1,4 +1,5 @@
-import icons from '../../img/icons.svg';
+// import icons from '../../img/icons.svg'; // Parcel 1 import
+import icons from 'url:../../img/icons.svg'; // Parcel 2 import
 
 class RecipeView {
   #parentElement = document.querySelector('.recipe');

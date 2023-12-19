@@ -600,7 +600,7 @@ const controlRecipes = async function() {
         // 1) Loading recipe
         await _modelJs.loadRecipe(id);
         // 2) Render recipe
-        (0, _recipeViewJsDefault.default).renderRecipe(_modelJs.state.recipe);
+        (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
     } catch (err) {
         console.log(err);
     }
@@ -2511,10 +2511,10 @@ var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class RecipeView {
     #parentElement = document.querySelector(".recipe");
     #data;
-    render() {
+    render(data) {
         this.#data = data;
-        const markup = this.#generateMarkup;
-        this.#clear;
+        const markup = this.#generateMarkup();
+        this.#clear();
         this.#parentElement.insertAdjacentHTML("afterbegin", markup);
     }
     #clear() {
@@ -2532,6 +2532,7 @@ class RecipeView {
         this.#parentElement.insertAdjacentHTML("afterbegin", markup);
     }
     #generateMarkup() {
+        console.log(this.#data);
         return `
     <figure class="recipe__fig">
       <img src="${this.#data.image}" alt="${this.#data.title}" class="recipe__img" />

@@ -5,10 +5,10 @@ class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
 
-  render() {
+  render(data) {
     this.#data = data;
-    const markup = this.#generateMarkup;
-    this.#clear;
+    const markup = this.#generateMarkup();
+    this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
@@ -29,6 +29,7 @@ class RecipeView {
   }
 
   #generateMarkup() {
+    console.log(this.#data);
     return `
     <figure class="recipe__fig">
       <img src="${this.#data.image}" alt="${

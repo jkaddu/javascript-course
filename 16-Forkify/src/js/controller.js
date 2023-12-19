@@ -1,4 +1,6 @@
 import icons from 'url:../img/icons.svg';
+import 'core-js/stable'; // Polyfiller
+import 'regenerator-runtime/runtime'; // Polyfiller for async functions
 
 const recipeContainer = document.querySelector('.recipe');
 

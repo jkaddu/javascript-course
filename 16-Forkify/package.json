@@ -2,7 +2,7 @@
   "name": "forkify",
   "version": "1.0.0",
   "description": "Recipe application",
-  "main": "index.html",
+  "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
@@ -10,6 +10,11 @@
   "author": "Joshua Kaddu",
   "license": "ISC",
   "dependencies": {
-    "parcel": "^2.10.3"
+    "core-js": "^3.34.0",
+    "parcel": "^2.10.3",
+    "regenerator-runtime": "^0.14.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.10.3"
   }
 }

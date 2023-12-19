@@ -1,6 +1,6 @@
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
-import icons from 'url:../img/icons.svg';
+
 import 'core-js/stable'; // Polyfiller
 import 'regenerator-runtime/runtime'; // Polyfiller for async functions
 

@@ -591,23 +591,12 @@ const timeout = function(s) {
 };
 // https://forkify-api.herokuapp.com/v2
 ////////////////////////////////////////
-const renderSpinner = function(parentEl) {
-    const markup = `
-    <div class="spinner">
-      <svg>
-        <use href="${icons}#icon-loader"></use>
-      </svg>
-    </div>
-  `;
-    parentEl.innerHTML = "";
-    parentEl.insertAdjacentHTML("afterbegin", markup);
-};
 const controlRecipes = async function() {
     try {
         const id = window.location.hash.slice(1);
         if (!id) return;
         console.log(id);
-        renderSpinner(recipeContainer);
+        (0, _recipeViewJsDefault.default).renderSpinner();
         // 1) Loading recipe
         await _modelJs.loadRecipe(id);
         // 2) Render recipe

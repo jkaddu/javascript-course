@@ -9,7 +9,6 @@ const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
     if (!id) return;
-    console.log(id);
 
     recipeView.renderSpinner();
     // 1) Loading recipe
@@ -37,6 +36,7 @@ controlSearchResults();
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
+  searchView.addHandlerSearch(controlSearchResults);
 };
 
 init();

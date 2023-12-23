@@ -587,7 +587,6 @@ const controlRecipes = async function() {
     try {
         const id = window.location.hash.slice(1);
         if (!id) return;
-        console.log(id);
         (0, _recipeViewJsDefault.default).renderSpinner();
         // 1) Loading recipe
         await _modelJs.loadRecipe(id);
@@ -610,6 +609,7 @@ const controlSearchResults = async function() {
 controlSearchResults();
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
+    (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
 };
 init();
 
@@ -2502,7 +2502,6 @@ const loadRecipe = async function(id) {
             cookingTime: recipe.cooking_time,
             ingredients: recipe.ingredients
         };
-        console.log(state.recipe);
     } catch (err) {
         console.log(err);
         throw err;
@@ -3020,10 +3019,10 @@ parcelHelpers.defineInteropFlag(exports);
 class SearchView {
     #parentEl = document.querySelector(".search");
     getQuery() {
-        return this.#parentEl.querySelector(".search_field").value;
+        return this.#parentEl.querySelector(".search__field").value;
     }
     addHandlerSearch(handler) {
-        this.#parentEl.addEventListener("subnit", function(e) {
+        this.#parentEl.addEventListener("submit", function(e) {
             e.preventDefault();
             handler();
         });

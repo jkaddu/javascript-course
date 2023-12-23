@@ -2,11 +2,11 @@ class SearchView {
   #parentEl = document.querySelector('.search');
 
   getQuery() {
-    return this.#parentEl.querySelector('.search_field').value;
+    return this.#parentEl.querySelector('.search__field').value;
   }
 
   addHandlerSearch(handler) {
-    this.#parentEl.addEventListener('subnit', function (e) {
+    this.#parentEl.addEventListener('submit', function (e) {
       e.preventDefault();
       handler();
     });

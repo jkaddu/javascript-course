@@ -598,6 +598,15 @@ const controlRecipes = async function() {
         (0, _recipeViewJsDefault.default).renderError();
     }
 };
+const controlSearchResults = async function() {
+    try {
+        await _modelJs.loadSearchResults("pizza");
+        console.log(_modelJs.state.search.results);
+    } catch (err) {
+        console.log(err);
+    }
+};
+controlSearchResults();
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
 };
@@ -2500,9 +2509,10 @@ const loadRecipe = async function(id) {
 };
 const loadSearchResults = async function(query) {
     try {
+        state.search.query = query;
         const data = await (0, _helpersJs.getJSON)(`${(0, _configJs.API_URL)}?search=${query}`);
         console.log(data);
-        data.data.recipe.map((rec)=>{
+        state.search.results = data.data.recipes.map((rec)=>{
             return {
                 id: rec.id,
                 title: rec.title,
@@ -2514,7 +2524,6 @@ const loadSearchResults = async function(query) {
         throw err;
     }
 };
-loadSearchResults("pizza");
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./config.js":"k5Hzs","./helpers.js":"hGI1E"}],"k5Hzs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

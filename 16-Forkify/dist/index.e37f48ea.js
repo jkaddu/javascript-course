@@ -3022,6 +3022,12 @@ class SearchView {
     getQuery() {
         return this.#parentEl.querySelector(".search_field").value;
     }
+    addHandlerSearch(handler) {
+        this.#parentEl.addEventListener("subnit", function(e) {
+            e.preventDefault();
+            handler();
+        });
+    }
 }
 exports.default = new SearchView();
 

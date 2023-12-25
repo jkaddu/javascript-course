@@ -6,6 +6,10 @@ import resultsView from './views/resultsView.js';
 import 'core-js/stable'; // Polyfiller
 import 'regenerator-runtime/runtime'; // Polyfiller for async functions
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -35,8 +39,6 @@ const controlSearchResults = async function () {
 
     // 3) Render results
     resultsView.render(model.state.search.results);
-
-    console.log(model.state.search.results);
   } catch (err) {
     console.log(err);
   }

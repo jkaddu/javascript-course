@@ -612,7 +612,7 @@ const controlSearchResults = async function() {
         // 2) Get search results
         await _modelJs.loadSearchResults(query);
         // 3) Render results
-        (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage());
+        (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage(1));
         // 4) Render initial pagination buttons
         (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
     } catch (err) {
@@ -3111,13 +3111,19 @@ var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class PaginationView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".pagination");
     _generateMarkup() {
-        // Page 1, with other pages
+        const numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
+        console.log(numPages);
         const markup = `
     
     `;
-    // Page 1, with no other pages
-    // Last page
-    // Pages outside of the first and last page
+        // Page 1, with other pages
+        if (this._data.page === 1 && numPages > 1) return "Page 1 and other pages";
+        // Last page
+        if (this._data.page === numPages && numPages > 1) return "Last page";
+        // Pages outside of the first and last page
+        if (this._data.page < numPages) return "Other pages";
+        // Page 1, with NO other pages
+        return "Only 1 page";
     }
 }
 exports.default = new PaginationView();

@@ -5,6 +5,7 @@ class PaginationView extends View {
   _parentElement = document.querySelector('.pagination');
 
   _generateMarkup() {
+    const curPage = this._data.page;
     const numPages = Math.ceil(
       this._data.results.length / this._data.resultsPerPage
     );
@@ -14,20 +15,47 @@ class PaginationView extends View {
     
     `;
     // Page 1, with other pages
-    if (this._data.page === 1 && numPages > 1) {
-      return 'Page 1 and other pages';
+    if (curPage === 1 && numPages > 1) {
+      return `
+      <button class="btn--inline pagination__btn--next">
+        <span>Page ${curPage + 1}</span>
+        <svg class="search__icon">
+            <use href="${icons}#icon-arrow-right"></use>
+        </svg>
+      </button> 
+      `;
     }
 
     // Last page
-    if (this._data.page === numPages && numPages > 1) {
-      return 'Last page';
+    if (curPage === numPages && numPages > 1) {
+      return `
+      <button class="btn--inline pagination__btn--prev">
+        <svg class="search__icon">
+            <use href="${icons}#icon-arrow-left"></use>
+        </svg>
+        <span>Page ${curPage - 1}</span>
+      </button>
+      `;
     }
     // Pages outside of the first and last page
-    if (this._data.page < numPages) {
-      return 'Other pages';
+    if (curPage < numPages) {
+      return `
+      <button class="btn--inline pagination__btn--prev">
+        <svg class="search__icon">
+          <use href="${icons}#icon-arrow-left"></use>
+        </svg>
+        <span>Page ${curPage - 1}</span>
+      </button>
+      <button class="btn--inline pagination__btn--next">
+        <span>Page ${curPage + 1}</span>
+        <svg class="search__icon">
+          <use href="${icons}#icon-arrow-right"></use>
+        </svg>
+      </button> 
+      `;
     }
     // Page 1, with NO other pages
-    return 'Only 1 page';
+    return '';
   }
 }
 

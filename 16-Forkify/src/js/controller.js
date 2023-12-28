@@ -47,11 +47,15 @@ const controlSearchResults = async function () {
     console.log(err);
   }
 };
-controlSearchResults();
+
+const controlPagination = function () {
+  console.log('Pagination');
+};
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSearchResults);
+  paginationView.addHandlerClick(controlPagination);
 };
 
 init();

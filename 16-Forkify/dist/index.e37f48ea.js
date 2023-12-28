@@ -619,10 +619,13 @@ const controlSearchResults = async function() {
         console.log(err);
     }
 };
-controlSearchResults();
+const controlPagination = function() {
+    console.log("Pagination");
+};
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
+    (0, _paginationViewJsDefault.default).addHandlerClick(controlPagination);
 };
 init();
 
@@ -3110,12 +3113,21 @@ var _iconsSvg = require("url:../../img/icons.svg"); // Parcel 2 import
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class PaginationView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".pagination");
+    addHandlerClick(handler) {
+        this._parentElement.addEventListener("click", function(e) {
+            const btn = e.target.closest(".btn--inline");
+            console.log(btn);
+            if (!btn) return;
+            const gotoPage = +btn.dataset.goto; // + symbol converts it from a string to a number
+            console.log(gotoPage);
+        });
+    }
     _generateMarkup() {
         const curPage = this._data.page;
         const numPages = Math.ceil(this._data.results.length / this._data.resultsPerPage);
         console.log(numPages);
         const nextButton = `
-    <button class="btn--inline pagination__btn--next">
+    <button data-goto="${curPage + 1}" class="btn--inline pagination__btn--next">
       <span>Page ${curPage + 1}</span>
       <svg class="search__icon">
         <use href="${(0, _iconsSvgDefault.default)}#icon-arrow-right"></use>
@@ -3123,7 +3135,7 @@ class PaginationView extends (0, _viewJsDefault.default) {
     </button>
     `;
         const prevButton = `
-    <button class="btn--inline pagination__btn--prev">
+    <button data-goto="${curPage - 1}" class="btn--inline pagination__btn--prev">
       <svg class="search__icon">
         <use href="${(0, _iconsSvgDefault.default)}#icon-arrow-left"></use>
       </svg>

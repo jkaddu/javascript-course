@@ -10,49 +10,36 @@ class PaginationView extends View {
       this._data.results.length / this._data.resultsPerPage
     );
     console.log(numPages);
-
-    const markup = `
-    
+    const nextButton = `
+    <button class="btn--inline pagination__btn--next">
+      <span>Page ${curPage + 1}</span>
+      <svg class="search__icon">
+        <use href="${icons}#icon-arrow-right"></use>
+      </svg>
+    </button>
     `;
+
+    const prevButton = `
+    <button class="btn--inline pagination__btn--prev">
+      <svg class="search__icon">
+        <use href="${icons}#icon-arrow-left"></use>
+      </svg>
+      <span>Page ${curPage - 1}</span>
+    </button>
+    `;
+
     // Page 1, with other pages
     if (curPage === 1 && numPages > 1) {
-      return `
-      <button class="btn--inline pagination__btn--next">
-        <span>Page ${curPage + 1}</span>
-        <svg class="search__icon">
-            <use href="${icons}#icon-arrow-right"></use>
-        </svg>
-      </button> 
-      `;
+      return nextButton;
     }
 
     // Last page
     if (curPage === numPages && numPages > 1) {
-      return `
-      <button class="btn--inline pagination__btn--prev">
-        <svg class="search__icon">
-            <use href="${icons}#icon-arrow-left"></use>
-        </svg>
-        <span>Page ${curPage - 1}</span>
-      </button>
-      `;
+      return prevButton;
     }
     // Pages outside of the first and last page
     if (curPage < numPages) {
-      return `
-      <button class="btn--inline pagination__btn--prev">
-        <svg class="search__icon">
-          <use href="${icons}#icon-arrow-left"></use>
-        </svg>
-        <span>Page ${curPage - 1}</span>
-      </button>
-      <button class="btn--inline pagination__btn--next">
-        <span>Page ${curPage + 1}</span>
-        <svg class="search__icon">
-          <use href="${icons}#icon-arrow-right"></use>
-        </svg>
-      </button> 
-      `;
+      return `${prevButton}${nextButton}`;
     }
     // Page 1, with NO other pages
     return '';

@@ -619,8 +619,11 @@ const controlSearchResults = async function() {
         console.log(err);
     }
 };
-const controlPagination = function() {
-    console.log("Pagination");
+const controlPagination = function(goToPage) {
+    // 1) Render NEW results
+    (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage(goToPage));
+    // 2) Render NEW pagination buttons
+    (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
 };
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
@@ -3116,10 +3119,9 @@ class PaginationView extends (0, _viewJsDefault.default) {
     addHandlerClick(handler) {
         this._parentElement.addEventListener("click", function(e) {
             const btn = e.target.closest(".btn--inline");
-            console.log(btn);
             if (!btn) return;
-            const gotoPage = +btn.dataset.goto; // + symbol converts it from a string to a number
-            console.log(gotoPage);
+            const goToPage = +btn.dataset.goto; // + symbol converts it from a string to a number
+            handler(goToPage);
         });
     }
     _generateMarkup() {

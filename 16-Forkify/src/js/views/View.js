@@ -1,9 +1,10 @@
-import icons from 'url:../../img/icons.svg';
+import icons from 'url:../../img/icons.svg'; // How to import using Parcel 2
 
 export default class View {
   _data;
 
   render(data, render = true) {
+    // Checks for undefined/null and if theres an empty array
     if (!data || (Array.isArray(data) && data.length === 0))
       return this.renderError(); // Guard clause for unmatched searches
 
@@ -17,20 +18,25 @@ export default class View {
   }
 
   update(data) {
-    if (!data || (Array.isArray(data) && data.length === 0))
-      return this.renderError(); // Guard clause for unmatched searches
+    // if (!data || (Array.isArray(data) && data.length === 0))
+    //   return this.renderError(); // Guard clause for unmatched searches
 
     this._data = data;
     const newMarkup = this._generateMarkup();
 
+    // Converts HTML aka markup into DOM nodesList
     const newDOM = document.createRange().createContextualFragment(newMarkup);
+    // Converts the new elements and current elements into an array
     const newElements = Array.from(newDOM.querySelectorAll('*'));
     const curElements = Array.from(this._parentElement.querySelectorAll('*'));
 
     newElements.forEach((newEl, i) => {
       const curEl = curElements[i];
 
-      // Updates text
+      // Updates changed text
+      // compares if new node does not have the same content as the current node and to make sure the node
+      // value contains text. trim() eliminates white space, ? is optional chaining so if there isn't a child element/node //
+      // it'll go with the parents element/node text content
       if (
         !newEl.isEqualNode(curEl) &&
         newEl.firstChild?.nodeValue.trim() !== ''
@@ -38,10 +44,13 @@ export default class View {
         curEl.textContent = newEl.textContent;
       }
 
-      // Updates attributes
+      // Updates changed attributes
+      // compares if new node does not have the same content as the current node
       if (!newEl.isEqualNode(curEl)) {
         Array.from(newEl.attributes).forEach(attr => {
           curEl.setAttribute(attr.name, attr.value);
+          console.log('name', attr.name);
+          console.log('value', attr.value);
         });
       }
     });

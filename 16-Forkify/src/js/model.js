@@ -93,3 +93,10 @@ export const deleteBookmark = function (id) {
   // Add bookmark symbol to current recipe
   if (id === state.recipe.id) state.recipe.bookmarked = false;
 };
+
+const init = function () {
+  const storage = localStorage.getItem('bookmarks');
+  if (storage) state.bookmnarks = JSON.parse(storage);
+};
+init();
+console.log(state.bookmnarks);

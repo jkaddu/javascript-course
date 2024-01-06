@@ -20,7 +20,7 @@ const controlRecipes = async function () {
     recipeView.renderSpinner();
 
     // 0) Update results view with selection highlighted
-    // resultsView.update(model.getSearchResultsPage()); // Not working, fix or delete it
+    resultsView.update(model.getSearchResultsPage()); // Not working, fix or delete it
 
     // 1) Loading recipe
     await model.loadRecipe(id);
@@ -29,6 +29,7 @@ const controlRecipes = async function () {
     recipeView.render(model.state.recipe);
   } catch (err) {
     recipeView.renderError();
+    console.error(err);
   }
 };
 
@@ -65,7 +66,6 @@ const controlServings = function (newServings) {
   // Update recipe servings (in state)
   model.updateServings(newServings);
   // Update recipe view
-  // recipeView.render(model.state.recipe);
   recipeView.update(model.state.recipe);
 };
 

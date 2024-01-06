@@ -79,7 +79,7 @@ export const updateServings = function (newServings) {
 export const addBookmark = function (recipe) {
   // Adds recipe to bookmarks array
   state.bookmnarks.push(recipe);
-
+  console.log(state.bookmnarks);
   // Add bookmark symbol to current recipe
   if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
 };
@@ -88,7 +88,8 @@ export const deleteBookmark = function (id) {
   const index = state.bookmnarks.findIndex(el => el.id === id);
   // Deletes recipe from boonkmarks array
   state.bookmnarks.splice(index, 1);
+  console.log(state.bookmnarks);
 
   // Add bookmark symbol to current recipe
-  if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
+  if (id === state.recipe.id) state.recipe.bookmarked = false;
 };

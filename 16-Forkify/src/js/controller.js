@@ -15,13 +15,13 @@ import 'regenerator-runtime/runtime'; // Polyfiller for async functions
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
-    if (!id) return;
 
+    if (!id) return;
     recipeView.renderSpinner();
 
     // 0) Update results view with selection highlighted
-    resultsView.update(model.getSearchResultsPage()); // Not working, fix or delete it
-
+    resultsView.update(model.getSearchResultsPage());
+    bookmarksView.update(model.state.bookmnarks);
     // 1) Loading recipe
     await model.loadRecipe(id);
 
@@ -84,7 +84,12 @@ const controlAddBookmark = function () {
   bookmarksView.render(model.state.bookmnarks);
 };
 
+const controlBookmarks = function () {
+  bookmarksView.render(model.state.bookmnarks);
+};
+
 const init = function () {
+  bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);

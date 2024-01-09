@@ -9,7 +9,7 @@ export const state = {
     page: 1,
     resultsPerPage: RES_PER_PAGE,
   },
-  bookmnarks: [],
+  bookmarks: [],
 };
 
 export const loadRecipe = async function (id) {
@@ -29,7 +29,7 @@ export const loadRecipe = async function (id) {
       ingredients: recipe.ingredients,
     };
 
-    if (state.bookmnarks.some(bookmark => bookmark.id === id))
+    if (state.bookmarks.some(bookmark => bookmark.id === id))
       state.recipe.bookmarked = true;
     else state.recipe.bookmarked = false;
   } catch (err) {
@@ -77,13 +77,13 @@ export const updateServings = function (newServings) {
 };
 
 const persistBookmarks = function () {
-  localStorage.setItem('bookmarks', JSON.stringify(state.bookmnarks));
+  localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
 };
 
 export const addBookmark = function (recipe) {
   // Adds recipe to bookmarks array
-  state.bookmnarks.push(recipe);
-  console.log(state.bookmnarks);
+  state.bookmarks.push(recipe);
+  console.log(state.bookmarks);
   // Add bookmark symbol to current recipe
   if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
 
@@ -91,10 +91,10 @@ export const addBookmark = function (recipe) {
 };
 
 export const deleteBookmark = function (id) {
-  const index = state.bookmnarks.findIndex(el => el.id === id);
+  const index = state.bookmarks.findIndex(el => el.id === id);
   // Deletes recipe from boonkmarks array
-  state.bookmnarks.splice(index, 1);
-  console.log(state.bookmnarks);
+  state.bookmarks.splice(index, 1);
+  console.log(state.bookmarks);
 
   // Add bookmark symbol to current recipe
   if (id === state.recipe.id) state.recipe.bookmarked = false;
@@ -104,7 +104,7 @@ export const deleteBookmark = function (id) {
 
 const init = function () {
   const storage = localStorage.getItem('bookmarks');
-  if (storage) state.bookmnarks = JSON.parse(storage);
+  if (storage) state.bookmarks = JSON.parse(storage);
 };
 init();
 
@@ -112,3 +112,8 @@ const clearBookmarks = function () {
   localStorage.clear('bookmarks');
 };
 // clearBookmarks();
+
+export const uploadRecipe = async function (newRecipe) {
+  console.log(Object.entries(newRecipe));
+  // const ingredients = Object.entries(newRecipe).filter(entry => )
+};
